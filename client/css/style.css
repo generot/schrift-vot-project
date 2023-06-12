@@ -1,0 +1,29 @@
+html {
+    background-color: whitesmoke;
+}
+
+.ql-snow {
+    background-color: white;
+}
+
+.ql-toolbar {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    width: 100%;
+    margin: auto;
+}
+
+#editor-div {
+    max-width: 20cm;
+    min-height: 90vh;
+    
+    margin: 1% auto;
+    border-radius: 10px;
+    border-color: white;
+}
+
+#quill-editor {
+    width: 35vw;
+    margin: auto;
+}

@@ -1,29 +1,160 @@
 html {
-    background-color: whitesmoke;
+    min-height: 100%;
+    background-image: linear-gradient(blue, rgba(255, 213, 0, 0.905));
 }
 
-.ql-snow {
-    background-color: white;
+body {
+    padding: 0;
+    margin: 0;
 }
 
-.ql-toolbar {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+#form-div {
+    margin: 5% auto;
+
+    width: 400px;
+    height: 100px;
+
+    text-align: center;
+}
+
+/* #form-button {
+    position: relative;
+    margin-top: 2%;
+
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: x-large;
+    color: rgb(20, 20, 34);
 
     width: 100%;
-    margin: auto;
-}
+    height: 70%;
 
-#editor-div {
-    width: 40vw;
-    min-height: 45vw;
-    
-    margin: 1% auto;
     border-radius: 10px;
-    border-color: white;
+    border-style: double;
+    background-color: transparent;
+} */
+
+.form-element {
+    position: relative;
+    margin-top: 2%;
+
+    width: 100%;
+    height: 70%;
 }
 
-#quill-editor {
-    width: 35vw;
-    margin: auto;
+#form-input {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+
+    background-color: rgb(20, 20, 34);
+    color: white;
 }
+
+#logo-cont {
+    margin-top: 1%;
+    width: 100vw;
+
+    display: block;
+    text-align: center;
+
+    background-color: rgb(20, 20, 34);
+}
+
+button {
+    position: relative;
+    background: #444;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: none;
+    letter-spacing: 0.1rem;
+    font-size: 1rem;
+    padding: 1rem 3rem;
+    transition: 0.2s;
+  }
+  
+  button:hover {
+    letter-spacing: 0.2rem;
+    padding: 1.1rem 3.1rem;
+    background: var(--clr);
+    color: var(--clr);
+    /* box-shadow: 0 0 35px var(--clr); */
+    animation: box 3s infinite;
+  }
+  
+  button::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    background: #272822;
+  }
+  
+  button span {
+    position: relative;
+    z-index: 1;
+  }
+  button i {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+  
+  button i::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    left: 80%;
+    top: -2px;
+    border: 2px solid var(--clr);
+    background: #272822;
+    transition: 0.2s;
+  }
+  
+  button:hover i::before {
+    width: 15px;
+    left: 20%;
+    animation: move 3s infinite;
+  }
+  
+  button i::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    left: 20%;
+    bottom: -2px;
+    border: 2px solid var(--clr);
+    background: #272822;
+    transition: 0.2s;
+  }
+  
+  button:hover i::after {
+    width: 15px;
+    left: 80%;
+    animation: move 3s infinite;
+  }
+  
+  @keyframes move {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(5px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes box {
+    0% {
+      box-shadow: #27272c;
+    }
+    50% {
+      box-shadow: 0 0 25px var(--clr);
+    }
+    100% {
+      box-shadow: #27272c;
+    }
+  }

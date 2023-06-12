@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
         <link href="/css/index.css" rel="stylesheet">
-
-        <script src="/socket.io/socket.io.js"></script>
-
-        <script src="//cdn.quilljs.com/1.0.0/quill.js"></script>
-        <script src="//cdn.quilljs.com/1.0.0/quill.min.js"></script>
-
         <script src="/js/index.js" defer></script>
+
+        <title>Schrift</title>
     </head>
     <body>
-        <div id="editor-div"></div>
+        <div id="logo-cont">
+            <img src="/images/logo.png" style="display: inline;">
+        </div>
+        <div id="form-div">
+            <!-- <button id="form-button">Create Document</button><br>
+            <button id="form-button">Join Document</button> -->
+            <button id="create-doc" class="form-element" style="--clr:#0FF0FC"><span>Create Document</span><i></i></button>
+            <button id="join-doc" class="form-element" style="--clr:#8A2BE2"><span>Join Document</span><i></i></button>
+        </div>
     </body>
 </html>

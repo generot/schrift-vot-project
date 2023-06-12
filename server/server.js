@@ -1,14 +1,17 @@
 const { createServer } = require("http");
 
+const PORT = 8080;
+
 const socket = require("socket.io");
 const express = require("express");
 const path = require("path");
 
-const PORT = 8080;
-
 const app = express();
 const server = createServer(app);
 const io = new socket.Server(server);
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(
     express.static(
@@ -21,8 +24,12 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-    socket.on("modify-text", (msg) => {
-        socket.broadcast.emit("user-altered-text", msg);
+    socket.on("join-document", (roomID) => {
+        socket.join(roomID);
+    })
+
+    socket.on("modify-text", (roomID, msg) => {
+        socket.to(roomID).emit("user-altered-text", msg);
     })
 })
 
