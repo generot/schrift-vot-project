@@ -35,7 +35,9 @@ function creator() {
 function entry(callback) {
     callback();
 
-    let socket = io();
+    let socket = io({
+        transports: [ "websocket" ]
+    });
 
     let editor = new Quill("#editor-div", {
         theme: "snow",

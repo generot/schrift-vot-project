@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: schrift-deployment
+  labels:
+    app: schrift
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: schrift
+  template:
+    metadata:
+      labels:
+        app: schrift
+    spec:
+      containers:
+      - name: schrift
+        image: vot/schrift:latest
+        imagePullPolicy: Never
+        resources:
+          requests:
+            memory: 256M
+            cpu: 500m
+          limits:
+            memory: 512M
+            cpu: 1M
+        ports:
+        - containerPort: 8080
+        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: balancer
+spec:
+  selector:
+    app: schrift
+  ports:
+    - port: 80
+      targetPort: 8080
+  externalTrafficPolicy: Local
+  type: LoadBalancer
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: schrift-autoscaler
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: schrift-deployment
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+status:
+  observedGeneration: 1
+  currentReplicas: 1
+  desiredReplicas: 1
+  currentMetrics:
+  - type: Resource
+    resource:
+      name: cpu
+      current:
+        averageUtilization: 0
+        averageValue: 0
